@@ -1,1 +1,0 @@
-create table Goals(ID int, goals decimal(13,2), increase decimal(13,2), decrease decimal(13,2));
