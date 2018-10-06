@@ -14,25 +14,27 @@ email = None
 
 @app.route("/", methods=['GET'])
 def index():
-    return render_template("index.html")
+    return render_template("index5.html")
 
 @app.route("/", methods=['POST'])
 def serve_form():
     email = request.form.get("Username")
     #these inputs are sanitized
     check = db.execute("SELECT * FROM users WHERE email == :email", {"email": email}).fetchone()
+
     if not check == None:                           # user exists
         return render_template('password.html')
     else:                                           # user doesn't exist
         return render_template('register.html')
 
 @app.route("/", methods=['POST'])
-def serve_dashboardteam-9_existing_user():
+def serve_dashboard_existing_user():
     password = request.form.get("Password")
-    #TODO validate password (length, characters, etc). Also, hash
     #TODO make sure password is correct from database
 
     return render_template('dashboard.html')
 
-@app.route("/", methods=['POST'])
+@app.route("/dashboard", methods=['POST'])
 def serve_dashboard_new_user():
+    # TODO validate password (length, characters, etc). Also, hash
+    return render_template("dashboard.html")
