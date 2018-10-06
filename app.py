@@ -26,16 +26,22 @@ def serve_form():
     #these inputs are sanitized
     #check = db.execute("SELECT * FROM users WHERE email == :email", {"email": email}).fetchone()
     if email == correct_email:
-        return render_template('password.html')
+        first_name = "Trevor"
+        display_text = "Hi, " + first_name + ". We're glad to have you back!"
+        return render_template('password.html', display_text = display_text)
     else:                                           # user doesn't exist
         return render_template('register.html')
 
 @app.route("/#pass", methods=['POST'])
 def serve_dashboard_existing_user():
-    password = request.form.get("Password")
+    password = request.form.get("password")
     #TODO make sure password is correct from database
     if hashlib.md5(password.encode()).hexdigest() == correct_password: #select password where email = email, compare to correct_password
         return render_template('dashboard.html')
+    else:
+        display_text = "Incorrect credentials!"
+        return render_template('password.html', display_text = display_text)
+
 
 @app.route("/dashboard", methods=['POST'])
 def serve_dashboard_new_user():
