@@ -15,20 +15,20 @@ mydb = mysql.connector.connect(
   database="hackathon"
 )
 
-email = ""
+email = ""                      
 
-myCursor = mydb.cursor(prepared=True)
+myCursor = mydb.cursor(prepared=True)           #Using prepared statements to prevent SQL injection
 
-app = Flask(__name__)
+app = Flask(__name__)                           #Server microfamework
 
 
 
-@app.route("/", methods=['GET'])
-def index():
+@app.route("/", methods=['GET'])            
+def index():                                    #Home page
     return render_template("index5.html")
 
 @app.route("/", methods=['POST'])
-def serve_form():
+def serve_form():                               #Decide weather user is new or existing. Then, serve appropriate page
     email = request.form.get("email")
     myCursor.execute("UPDATE tempemail set Email = %s", (email,))
     mydb.commit()
@@ -38,14 +38,14 @@ def serve_form():
     myCursor.execute("SELECT COUNT(*) FROM Person WHERE Email = %s", (email,))
     myresult = myCursor.fetchall()
 
-    if myresult[0][0]:          #account found
+    if myresult[0][0]:      #account found: user already exists. we will greet and provide password input field
         myCursor.execute("SELECT FirstName FROM Person WHERE Email = %s", (email,))
         myresult = myCursor.fetchone()
         first_name = str(myresult[0].decode())
         display_text = "Hi, " + first_name.title() + ". We're glad to have you back!"
 
         return render_template('password.html', display_text = display_text)
-    else:                                           # user doesn't exist
+    else:                   # user doesn't exist. we will provide oppertunity to sign up
         return render_template('register.html')
 
 @app.route("/pass", methods=['POST'])
