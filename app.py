@@ -12,4 +12,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    return render_template("index.html")
+    if request.method == "GET":
+        return render_template("index.html", username_form = username_form)
+    #
+    # username request.form.get("Username")
+    # return render_template("index.html", )
