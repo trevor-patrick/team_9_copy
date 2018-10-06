@@ -1,4 +1,7 @@
 var lang;
+var flag = false;
+var utterance;
+var synth;
 
 $(document).ready(function(){
     $('#logBtn').click(function(){
@@ -6,6 +9,7 @@ $(document).ready(function(){
             scrollTop: $('#LogInPart').offset().top
         }, 750);
     });
+    synth = speechSynthesis;
     if ('speechSynthesis' in window) {
         /* speech synthesis supported */
         console.log('yes');
@@ -17,6 +21,36 @@ $(document).ready(function(){
 
     if(window.innerWidth < 992)
         reSizeSumBoxes();
+
+	$('#click').click(function(){
+		console.log('click has been clicked');
+		if(!flag){
+	       		flag = true;
+	       		utterance = new SpeechSynthesisUtterance(
+		     	document.getElementById('welcome').textContent);
+	       		utterance.voice = synth.getVoices()[-60];
+	       		utterance.onend = function(){
+		   		flag = false;
+       			};
+       			synth.speak(utterance);
+   		}	
+	});
+
+	
+	$('#click2').click(function(){
+		console.log('click has been clicked');
+		if(!flag){
+	       		flag = true;
+	       		utterance = new SpeechSynthesisUtterance(
+		     	document.getElementById('mission').textContent+"..."+document.getElementById('statement').textContent);
+	       		utterance.voice = synth.getVoices()[-60];
+	       		utterance.onend = function(){
+		   		flag = false;
+       			};
+       			synth.speak(utterance);
+   		}	
+	});
+
 });
 
 $(window).resize(function(){
