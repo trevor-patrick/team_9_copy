@@ -1,9 +1,8 @@
-# team-9
+### team-9
 
-This is a sample readme. Should add information later.
+##Welcome to team 9's project! We worked hard to bring Catalyst a product foundation.
 
-Right now, we need to get started on the following:
-- set up a MySQL database
-- get everyone on the git repository
-- start modeling the backend
-- wireframe the front end.
+#We present an authenticated webapp providing multiple dashboards
+- The financial dashboard helps keep clients on track with their spending habits
+	- Allows for careful saving
+	
