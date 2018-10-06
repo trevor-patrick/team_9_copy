@@ -20,7 +20,6 @@
                                 <button style="background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">Español</button>
                                 <button style="background-color: #0B4A61; color: white;" class="btn" type="button">Haitian Creole</button>
                         </div>
-                        
                         <div id="navRow2" class="row" style="width:100%;">
                             <button id="logBtn" class="btn btn-danger" style="width: 100%;" type="button">Log In / Sign Up</button>
                         </div>
@@ -51,7 +50,7 @@
                     <div class="card shadow text-center" style="margin-bottom: 30px;">
                         <form id="LogInPart" method="POST" action="{{ url_for('serve_form') }}" style="margin-top: 30px;">
                             <h4 style="color: #C82333; font-weight: bold; margin-bottom: 15px;">Log In / Sign Up</h4>
-                            <input id="userName" type="text" placeholder="Username" style="margin-bottom: 15px;"><br>
+                            <input id="email" type="text" placeholder="Email" style="margin-bottom: 15px;" name="email"><br>
                             <input type="submit" value="Submit" style="margin-bottom: 15px; background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">
                         </form>
         

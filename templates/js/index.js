@@ -15,11 +15,15 @@ $(document).ready(function(){
         console.log('no');
     }
 
-    reSizeSumBoxes();
+    if(window.innerWidth < 992)
+        reSizeSumBoxes();
 });
 
 $(window).resize(function(){
-    reSizeSumBoxes();
+    if(window.innerWidth < 992)
+        reSizeSumBoxes();
+    else
+        $('#navRow2').css('width', '100%');
 });
 
 /* UI Experience */
