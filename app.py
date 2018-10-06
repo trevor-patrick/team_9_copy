@@ -45,6 +45,11 @@ def serve_dashboard_existing_user():
 
 @app.route("/dashboard", methods=['POST'])
 def serve_dashboard_new_user():
-    # TODO validate password (length, characters, etc). Also, hash
-
-    return render_template("dashboard.html")
+    password = request.form.get("password")
+    password2 = request.form.get("password_verify")
+    print(password)
+    if 8 < len(password) < 15 and password == password2:
+        print("passwords are same")
+        return render_template("dashboard.html")
+    else:
+        return render_template("register.html", invalid_password = "Passwords must match and be between 8 and 15 characters.")
