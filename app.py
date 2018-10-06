@@ -88,12 +88,9 @@ def serve_dashboard_new_user():                                                 
     else:
         return render_template("register.html", invalid_password = "Passwords must match and be between 8 and 15 characters.")
 
-@app.route("/budget", methods=['POST'])
+@app.route("/budget", methods=['GET'])
 def serve_financials():
-    goal = request.form.get("goal")
-    gains = request.form.get("gains")
-    losses = request.form.get("losses")
-    return render_template("financial.html", goal_var = 100)
+    return render_template("financial.html")
 
 @app.route("/index5", methods=['GET'])                                              #English home page
 def serve_index5():
@@ -106,3 +103,35 @@ def serve_index6():                                                             
 @app.route("/index7", methods=['GET'])
 def serve_index7():                                                                 #Haitian Creole home page
     return render_template('index7.html')
+
+# @app.route("/finance", methods=['GET'])
+# def serve_finance():                                                                 #Haitian Creole home page
+#     return render_template('financial.html')
+
+@app.route("/health", methods=['GET'])
+def serve_health():                                                                 #Haitian Creole home page
+    return render_template('health.html')
+
+@app.route("/resilience", methods=['GET'])
+def serve_resilience():                                                                 #Haitian Creole home page
+    return render_template('resilience.html')
+
+@app.route("/leadership", methods=['GET'])
+def serve_leadership():                                                                 #Haitian Creole home page
+    return render_template('leadership.html')
+
+@app.route("/formm", methods=['GET'])
+def serve_formm():                                                                 #Haitian Creole home page
+    return render_template('form.html')
+
+@app.route("/goal", methods=['GET'])
+def serve_goal():                                                                 #Haitian Creole home page
+    return render_template('goal.html')
+
+@app.route("/account", methods=['GET'])
+def serve_account():                                                                 #Haitian Creole home page
+    return render_template('account.html')
+
+@app.route("/policy", methods=['GET'])
+def serve_policy():
+    return render_template('policy.html')
