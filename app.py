@@ -1,5 +1,6 @@
 import os
 import sys
+import hashlib
 
 from flask import Flask, render_template, request
 from sqlalchemy import create_engine
@@ -7,8 +8,11 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 app = Flask(__name__)
 
-engine = create_engine('postgres://olxpdkjidxzijo:6c0ff6d277bd117d6e615144dab8b3fe26e190e0788c30c9aa4c6de74076af2d@ec2-54-235-242-63.compute-1.amazonaws.com:5432/d25m2jqruo7e1o')
-db = scoped_session(sessionmaker(bind=engine))
+# engine = create_engine('')
+# db = scoped_session(sessionmaker(bind=engine))
+
+correct_email = 'test_email'
+correct_password = hashlib.md5('testpass'.encode()).hexdigest()
 
 email = None
 
@@ -20,9 +24,8 @@ def index():
 def serve_form():
     email = request.form.get("Username")
     #these inputs are sanitized
-    check = db.execute("SELECT * FROM users WHERE email == :email", {"email": email}).fetchone()
-
-    if not check == None:                           # user exists
+    #check = db.execute("SELECT * FROM users WHERE email == :email", {"email": email}).fetchone()
+    if email == correct_email:
         return render_template('password.html')
     else:                                           # user doesn't exist
         return render_template('register.html')
@@ -31,10 +34,11 @@ def serve_form():
 def serve_dashboard_existing_user():
     password = request.form.get("Password")
     #TODO make sure password is correct from database
-
-    return render_template('dashboard.html')
+    if hashlib.md5(password.encode()).hexdigest() == correct_password: #select password where email = email, compare to correct_password
+        return render_template('dashboard.html')
 
 @app.route("/dashboard", methods=['POST'])
 def serve_dashboard_new_user():
     # TODO validate password (length, characters, etc). Also, hash
+
     return render_template("dashboard.html")
