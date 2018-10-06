@@ -5,15 +5,46 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+        <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+      <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
         <!-- <link rel="stylesheet" href="css/index.css">
         <script type="text/javascript" src="js/index.js"></script> -->
     </head>
     <body>
         
+            <div id="container" style="width: 100%; height: 100%"></div>
+
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">Place sticky footer content here.</span>
             </div>
         </footer>
+
+        <script type="text/javascript">
+             anychart.onDocumentReady(function() {
+
+                // set the data
+                var data = [
+                    {x: "White", value: 223553265},
+                    {x: "Black or African American", value: 38929319},
+                    {x: "American Indian and Alaska Native", value: 2932248},
+                    {x: "Asian", value: 14674252},
+                ];
+
+                // create the chart
+                var chart = anychart.pie();
+
+                // set the chart title
+                chart.title("Population by Race for the United States: 2010 Census");
+
+                // add the data
+                chart.data(data);
+
+                // display the chart in the container
+                chart.container('container');
+                chart.draw();
+
+            });
+        </script>
     </body>
 </html>
