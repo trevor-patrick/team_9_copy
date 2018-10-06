@@ -28,7 +28,7 @@ $(document).ready(function(){
 	       		flag = true;
 	       		utterance = new SpeechSynthesisUtterance(
 		     	document.getElementById('welcome').textContent);
-	       		utterance.voice = synth.getVoices()[-60];
+	       		utterance.voice = synth.getVoices()[-70];
 	       		utterance.onend = function(){
 		   		flag = false;
        			};
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	       		flag = true;
 	       		utterance = new SpeechSynthesisUtterance(
 		     	document.getElementById('mission').textContent+"..."+document.getElementById('statement').textContent);
-	       		utterance.voice = synth.getVoices()[-60];
+	       		utterance.voice = synth.getVoices()[-70];
 	       		utterance.onend = function(){
 		   		flag = false;
        			};
