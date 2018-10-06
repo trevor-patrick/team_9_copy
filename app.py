@@ -22,7 +22,7 @@ def index():
 
 @app.route("/", methods=['POST'])
 def serve_form():
-    email = request.form.get("Username")
+    email = request.form.get("email")
     #these inputs are sanitized
     #check = db.execute("SELECT * FROM users WHERE email == :email", {"email": email}).fetchone()
     if email == correct_email:
@@ -30,7 +30,7 @@ def serve_form():
     else:                                           # user doesn't exist
         return render_template('register.html')
 
-@app.route("/", methods=['POST'])
+@app.route("/#pass", methods=['POST'])
 def serve_dashboard_existing_user():
     password = request.form.get("Password")
     #TODO make sure password is correct from database
