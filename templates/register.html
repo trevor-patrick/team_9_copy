@@ -49,12 +49,15 @@
                     <p>Please tell us a little bit about yourself:</p>
                   </div>
                     <div class="card shadow text-center" style="margin-bottom: 30px;">
-                        <form id="LogInPart" method="POST" action="{{ url_for('serve_form') }}" style="margin-top: 30px;">
+                        <form id="LogInPart" method="POST" action="{{ url_for('serve_dashboard_new_user') }}" style="margin-top: 30px;">
                             <h4 style="color: #C82333; font-weight: bold; margin-bottom: 15px;">Sign up!</h4>
                             <input id="firstname" type="text" placeholder="First Name" style="margin-bottom: 15px;" name="firstname"><br>
                             <input id="lastname" type="text" placeholder="Last Name" style="margin-bottom: 15px;" name="lastname"><br>
                             <input id="zipcode" type="text" placeholder="ZIP Code" style="margin-bottom: 15px;" name="zipcode"><br>
                             <input id="phone" type="text" placeholder="Phone Number" style="margin-bottom: 15px;" name="phonenubmer"><br>
+                            <input id="password" type="password" placeholder="Password" style="margin-bottom: 15px;" name="password"><br>
+                            <input id="password2" type="password" placeholder="Verify Password" style="margin-bottom: 15px;" name="password_verify"><br>
+                            <h6 style="color: #C82333; font-weight: bold;">{{ invalid_password }}</h6>
                             <input type="submit" value="Submit" style="margin-bottom: 15px; background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">
                             <a name="pass"></a>
                         </form>
