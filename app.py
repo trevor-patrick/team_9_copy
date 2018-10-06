@@ -58,38 +58,33 @@ def serve_dashboard_existing_user():
 
     myCursor.execute("SELECT Password FROM Person WHERE Email = %s", (db_email,))
     myresult = myCursor.fetchone()
-    # print("our info: " + myresult[0].decode())
-    # passwordHash = hashlib.md5(str(myresult[0].decode()).encode()).hexdigest()
 
-    print("[[_ " + db_email + " <------username")
-    print(myresult[0].decode() + " <-------password")
-    if hashlib.md5(password.encode()).hexdigest() == myresult[0].decode():
+    if hashlib.md5(password.encode()).hexdigest() == myresult[0].decode():          #compare hashes of passwords
         return render_template('financial.html')
     else:
-        display_text = "Incorrect credentials!"
+        display_text = "Incorrect credentials!"                                     #handle bad password
         return render_template('password.html', display_text = display_text)
 
 
 @app.route("/dashboard", methods=['POST'])
-def serve_dashboard_new_user():
+def serve_dashboard_new_user():                                                     #register new user
     firstname = request.form.get("firstname")
     lastname = request.form.get("lastname")
     phonenumber = request.form.get("phonenumber")
     zipcode = request.form.get("zipcode")
     password = request.form.get("password")
     password2 = request.form.get("password_verify")
-    passwordhash = hashlib.md5(password.encode()).hexdigest()
+    passwordhash = hashlib.md5(password.encode()).hexdigest()                       #unidirectional hash password storage: security
     print(password)
-    if 8 < len(password) < 15 and password == password2:
+    if 8 < len(password) < 15 and password == password2:                            #basic password validation
 
         myCursor.execute("SELECT Email From tempemail;")
         emailResult = myCursor.fetchone()
-        print("Email Result: -----------> " + emailResult[0].decode())
-        print("{} {} {} {} {} {}".format(firstname,lastname,phonenumber,zipcode,password,password2))
+
         myCursor.execute("INSERT INTO person (FirstName, LastName, Email, Password, ZipCode, PhoneNumber) VALUES('%s', '%s', '%s', '%s', '%d', '%d');" % (firstname, lastname, emailResult[0].decode(), passwordhash, int(zipcode), int(phonenumber)))
         mydb.commit()
 
-        return render_template("financial.html")
+        return render_template("financial.html")                                    #render financial dashboard
     else:
         return render_template("register.html", invalid_password = "Passwords must match and be between 8 and 15 characters.")
 
@@ -100,14 +95,14 @@ def serve_financials():
     losses = request.form.get("losses")
     return render_template("financial.html", goal_var = 100)
 
-@app.route("/index5", methods=['GET'])
+@app.route("/index5", methods=['GET'])                                              #English home page
 def serve_index5():
     return render_template('index5.html')
 
 @app.route("/index6", methods=['GET'])
-def serve_index6():
+def serve_index6():                                                                 #Spanish home page
     return render_template('index6.html')
 
 @app.route("/index7", methods=['GET'])
-def serve_index7():
+def serve_index7():                                                                 #Haitian Creole home page
     return render_template('index7.html')
