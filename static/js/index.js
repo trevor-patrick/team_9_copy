@@ -28,7 +28,7 @@ $(document).ready(function(){
 	       		flag = true;
 	       		utterance = new SpeechSynthesisUtterance(
 		     	document.getElementById('welcome').textContent);
-	       		utterance.voice = synth.getVoices()[-70];
+	       		utterance.voice = synth.getVoices()[0];
 	       		utterance.onend = function(){
 		   		flag = false;
        			};

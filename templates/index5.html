@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="./static/css/index.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script type="text/javascript" src="../static/js/index.js"></script>
+        <script type="text/javascript" src="./static/js/index.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
@@ -17,9 +17,9 @@
                     <div class="navbar-nav ml-auto"></div>
                     <div class="nav navbar-nav ml-auto justify-content-end">
                         <div id="navRow1" class="row" style="">
-                                <a href="./index5.html" role="button" style="background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">English</a>
-                                <a href="./index6.html" role="button" style="background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">Español</a>
-                                <a href="./index7.html" role="button" style="background-color: #0B4A61; color: white;" class="btn" type="button">Haitian Creole</a>
+                                <a href="{{ url_for('serve_index5') }}" role="button" style="background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">English</a>
+                                <a href="{{ url_for('serve_index6') }}" role="button" style="background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">Español</a>
+                                <a href="{{ url_for('serve_index7') }}" role="button" style="background-color: #0B4A61; color: white;" class="btn" type="button">Haitian Creole</a>
                         </div>
                         <div id="navRow2" class="row" style="width:100%;">
                             <button id="logBtn" class="btn btn-danger" style="width: 100%;" type="button">Log In / Sign Up</button>
