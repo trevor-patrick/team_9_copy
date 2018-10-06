@@ -1,0 +1,1 @@
+create table Balance(ID int, Balance decimal(13,2));
