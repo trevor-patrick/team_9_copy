@@ -1,0 +1,11 @@
+alter table ZipCode add column nearestCatalystMiami varchar(255), add column nearestPoliticalOffice varchar(255); 
+
+update ZipCode
+set nearestCatalystMiami = "151 NW 11 St., Suite 400
+Homestead, FL, 33030",
+where Name = "Homestead";
+
+update ZipCode
+set nearestCatalystMiami = "3000 Biscayne Blvd., Suite 210
+Miami, FL 33137",
+where Name != "Homestead";
