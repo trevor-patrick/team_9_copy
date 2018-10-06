@@ -7,11 +7,8 @@
 
         <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
       <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
-      <link rel="stylesheet" href="../../static/css/financial.css"> 
       <link rel="stylesheet" href="../../static/css/genDash.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <!-- 
-        <script type="text/javascript" src="js/index.js"></script> -->
     </head>
     <body>
         <div id="content" class="container text-center mx-auto" style="height: 100px !important; margin-bottom: 50px;">
@@ -19,7 +16,7 @@
                 <div class="col-1"></div>
                 <div class="col-12">
                     <div class="card shadow" style="margin-top: 35px; margin-bottom: 15px;padding: 15px 0;">
-                        <h4 style="color: #C82333; font-weight: bold;">Financial</h4>
+                        <h4 style="color: #C82333; font-weight: bold;">Forms</h4>
                     </div>
                 </div>
                 <div class="col-1">
@@ -30,17 +27,7 @@
             
             <div id="container" style=""></div>
 
-            <div class="card shadow text-center" style="margin-bottom: 300px; margin-top: 50px">
-                    <form id="LogInPart" method="POST" action="" style="margin-top: 30px;">
-                        <h4 style="color: #C82333; font-weight: bold; margin-bottom: 15px;">Enter your Budgeting Info!</h4>
-                        <input id="goal" type="text" placeholder="Set Goal" style="margin-bottom: 15px;" name="goal"><br>
-                        <input id="gains" type="text" placeholder="Gains" style="margin-bottom: 15px;" name="gains"><br>
-                        <input id="losses" type="text" placeholder="Losses" style="margin-bottom: 15px;" name="losses"><br>
-                        <input type="submit" value="Submit" style="margin-bottom: 15px; background-color: #0B4A61; color: white; margin-right: 4px;" class="btn" type="button">
-                    </form>
-
-
-                </div>
+            
         </div>
         
 
@@ -48,7 +35,7 @@
             <div class="" style="margin:0; padding:0; width: 100%">
                 <div class="row" style="width: 100%; margin: 0;">
                     <div class="col" style="padding: 0; margin: 0;">
-                            <a href="./financial.html" role="button" class="btn btn-danger curTab" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-usd" aria-hidden="true" style="height: 15px;"></i><br><br>Financial</a>
+                            <a href="./financial.html" role="button" class="btn btn-danger " style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-usd" aria-hidden="true" style="height: 15px;"></i><br><br>Financial</a>
                     </div>
                     <div class="col" style="padding: 0; margin: 0;">
                         <a href="./health.html" role="button" class="btn btn-danger" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-heartbeat" aria-hidden="true"></i><br><br>Health</a>
@@ -65,7 +52,7 @@
                             <a href="./leadership.html" role="button" class="btn btn-danger" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-users" aria-hidden="true"></i><br><br>Leadership</a>
                     </div>
                     <div class="col" style="padding: 0; margin: 0;">
-                            <a href="./form.html" role="button" class="btn btn-danger" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-paper-plane" aria-hidden="true"></i><br><br>Forms</a>
+                            <a href="./form.html" role="button" class="btn btn-danger curTab" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-paper-plane" aria-hidden="true"></i><br><br>Forms</a>
                     </div>
                     <div class="col" style="padding: 0; margin: 0;">
                             <a href="./goal.html" role="button" class="btn btn-danger" style="height: 100%; width: 100%; border-radius: 0; border-color: white;"><i class="fa fa-line-chart" aria-hidden="true"></i><br><br>Goals</a>
@@ -77,46 +64,5 @@
                 
             </div>
         </footer>
-
-        <script type="text/javascript">
-        var goal = 250;
-        var saved = 10;
-        var left = goal - saved;
-             anychart.onDocumentReady(function() {
-
-                var data;
-                if(left >= 0)
-                {
-                    // set the data
-                    data = [
-                        {x: "Amount Saved", value: saved, color: '#008000'},
-                        {x: "Leftover", value: left, color: '#0000ff'},
-                    ];
-
-                    
-                }
-                else{
-                    data = [
-                        {x: "Gained extra", value: saved, color: green},
-                    ];
-                }
-                // create the chart
-                var chart = anychart.pie();
-                // set the chart title
-                chart.title("Budgeting");
-                // add the data
-                chart.data(data);
-                
-
-                chart.legend().position("bottom");
-
-                
-
-                // display the chart in the container
-                chart.container('container');
-                chart.draw();
-
-            });
-        </script>
     </body>
 </html>
