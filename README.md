@@ -12,7 +12,6 @@
 - MySQL
 - HTML, CSS, Javascript
 - Text-to-Speach (HTML5)
-- 
 
 # Our biggest learning experiences
 - Configuring interaction between frontend and middleware
